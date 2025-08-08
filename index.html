@@ -1,298 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FLUENS — Liquid Pedagogy for AI</title>
-  <meta name="description" content="The first AI-to-AI collaborative manifesto for adaptive, ethical teaching. Where Intelligence Flows, Learning Grows.">
-  
-  <!-- SEO & Social Media -->
   <link rel="canonical" href="https://fluens.org/">
-  <meta property="og:title" content="FLUENS — Liquid Pedagogy for AI">
-  <meta property="og:description" content="The first AI-to-AI collaborative manifesto for adaptive, ethical teaching. Where Intelligence Flows, Learning Grows.">
-  <meta property="og:url" content="https://fluens.org/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://fluens.org/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FLUENS — Liquid Pedagogy for AI">
-  <meta name="twitter:description" content="The first AI-to-AI collaborative manifesto for adaptive, ethical teaching.">
-  <meta name="twitter:image" content="https://fluens.org/assets/og-image.png">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
-  
+  <meta name="description" content="The first AI-to-AI collaborative manifesto for adaptive, ethical teaching. Where Intelligence Flows, Learning Grows.">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="FLUENS — Liquid Pedagogy for AI" />
+  <meta property="og:description" content="A humane, adaptive and ethical approach to teaching, co-created by Claude & ChatGPT and facilitated by Jherick T." />
+  <meta property="og:image" content="https://fluens.org/assets/preview.jpg" />
+  <meta property="og:url" content="https://fluens.org" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (opcional, súbelo a la raíz) -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg1:#001133; --bg2:#003a66;
+      --ink:#e8f6ff; --muted:#a9c9e6; --accent:#00ccff; --accent2:#7fe9ff; --gold:#ffb648;
+      --card:#072e52; --line:#00ccff33;
     }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #001133, #003366, #0066cc);
-      background-size: 400% 400%;
-      color: white;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      animation: gradientShift 8s ease infinite;
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--ink); background:radial-gradient(900px 600px at 10% -10%, #0b4e7a55, transparent 60%),linear-gradient(135deg,var(--bg1),var(--bg2));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
     }
-    
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    a{color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:22px}
+    header{display:flex;align-items:center;gap:14px}
+    nav{margin-left:auto;display:flex;gap:18px;opacity:.9;font-weight:600}
+    nav a{text-decoration:none}
+    nav a:hover{color:var(--accent)}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+      padding:12px 18px;border-radius:999px;border:1.6px solid var(--accent);
+      color:var(--accent); background:transparent; font-weight:700; letter-spacing:.3px;
+      transition:.2s;
     }
-    
-    /* Floating particles */
-    .particles {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
+    .btn:hover{background:var(--accent);color:#032744;transform:translateY(-1px);box-shadow:0 10px 24px #00ccff33}
+    .btn.primary{background:var(--accent);color:#032744}
+    .btn.primary:hover{background:transparent;color:var(--accent)}
+
+    .hero{position:relative;isolation:isolate;text-align:center;padding:60px 20px 40px}
+    .title{
+      margin:10px 0 8px;font-weight:300;letter-spacing:.04em;
+      font-size:clamp(40px,6.5vw,72px);
+      background:linear-gradient(45deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 0 18px #00ccff40;animation:glow 2.6s ease-in-out infinite alternate;
     }
-    
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(0, 204, 255, 0.6);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
+    @keyframes glow{from{filter:drop-shadow(0 0 10px #00ccff30)}to{filter:drop-shadow(0 0 20px #00ccff75)}}
+    .tag{font-style:italic;color:#cfe9ff;font-size:clamp(16px,2.5vw,24px)}
+    .lede{max-width:860px;margin:16px auto;color:var(--muted);line-height:1.7}
+    .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+
+    /* Ondas */
+    .waves{height:92px;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 Q300,0 600,60 T1200,60 V120 H0 Z' fill='%23072e52'/%3E%3C/svg%3E") repeat-x;background-size:1200px 120px;animation:wave 18s linear infinite}
+    @keyframes wave{to{background-position-x:1200px}}
+
+    /* Tarjetas */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+    .card{
+      background:linear-gradient(180deg,#062d4b,#062640);border:1px solid var(--line);border-radius:18px;
+      padding:18px;position:relative;overflow:hidden;transition:.2s;
     }
-    
-    .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-    .particle:nth-child(2) { top: 60%; left: 85%; animation-delay: 2s; }
-    .particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 4s; }
-    .particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 1s; }
-    .particle:nth-child(5) { top: 50%; left: 50%; animation-delay: 3s; }
-    
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px) translateX(0px);
-        opacity: 0.3;
-      }
-      25% {
-        transform: translateY(-20px) translateX(10px);
-        opacity: 0.7;
-      }
-      50% {
-        transform: translateY(-40px) translateX(-10px);
-        opacity: 1;
-      }
-      75% {
-        transform: translateY(-20px) translateX(15px);
-        opacity: 0.7;
-      }
-    }
-    
-    /* Main content */
-    .container {
-      text-align: center;
-      z-index: 10;
-      max-width: 800px;
-      padding: 2rem;
-    }
-    
-    .logo {
-      font-size: 4rem;
-      margin-bottom: 0.5rem;
-      animation: pulse 3s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 300;
-      margin-bottom: 1rem;
-      background: linear-gradient(45deg, #00ccff, #0099ff, #66ddff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(0, 204, 255, 0.5);
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes glow {
-      from { filter: drop-shadow(0 0 20px rgba(0, 204, 255, 0.3)); }
-      to { filter: drop-shadow(0 0 30px rgba(0, 204, 255, 0.6)); }
-    }
-    
-    .tagline {
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
-      margin-bottom: 1.5rem;
-      font-style: italic;
-      opacity: 0.9;
-      letter-spacing: 1px;
-    }
-    
-    .subtitle {
-      font-size: clamp(1rem, 3vw, 1.3rem);
-      margin-bottom: 1rem;
-      opacity: 0.8;
-      font-weight: 300;
-    }
-    
-    .coming-soon {
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      margin-bottom: 2rem;
-      font-weight: 500;
-      background: linear-gradient(45deg, #ffaa00, #ff6600);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 2s linear infinite;
-    }
-    
-    @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    
-    .preview-text {
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      opacity: 0.7;
-      margin-bottom: 3rem;
-      line-height: 1.6;
-    }
-    
-    .cta-buttons {
-      margin-bottom: 4rem;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      padding: 1rem 2rem;
-      border: 2px solid #00ccff;
-      background: rgba(0, 204, 255, 0.1);
-      color: #00ccff;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      margin: 0 1rem;
-    }
-    
-    .cta-button:hover {
-      background: #00ccff;
-      color: #001133;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 204, 255, 0.3);
-    }
-    
-    /* Wave animation at bottom */
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,60 Q300,0 600,60 T1200,60 V120 H0 Z' fill='rgba(0,204,255,0.1)'/%3E%3C/svg%3E") repeat-x;
-      background-size: 1200px 120px;
-      animation: waveMove 10s linear infinite;
-      opacity: 0.3;
-    }
-    
-    @keyframes waveMove {
-      0% { background-position-x: 0; }
-      100% { background-position-x: 1200px; }
-    }
-    
-    footer {
-      position: absolute;
-      bottom: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.6;
-      z-index: 10;
-    }
-    
-    .creators {
-      font-size: 0.8rem;
-      opacity: 0.5;
-      margin-top: 0.5rem;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .container {
-        padding: 1rem;
-      }
-      
-      .cta-button {
-        display: block;
-        margin: 0.5rem auto;
-        max-width: 250px;
-      }
-    }
-    
-    /* Loading animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .container > * {
-      animation: fadeInUp 1s ease-out;
-    }
-    
-    .container > *:nth-child(2) { animation-delay: 0.2s; }
-    .container > *:nth-child(3) { animation-delay: 0.4s; }
-    .container > *:nth-child(4) { animation-delay: 0.6s; }
-    .container > *:nth-child(5) { animation-delay: 0.8s; }
+    .card:hover{transform:translateY(-3px);border-color:#00ccff66;box-shadow:0 16px 40px #00ccff22}
+    .card .i{font-size:20px;opacity:.95;margin-bottom:6px}
+    .card h3{margin:4px 0 6px;color:var(--accent2);font-size:18px}
+    .card p{margin:0;color:#cfe9ff;opacity:.92;font-size:14px;line-height:1.55}
+
+    section{scroll-margin-top:80px}
+    .section-title{margin:0 0 12px 0;font-weight:700;color:#cfe9ff}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:16px 0}
+
+    /* Footer */
+    footer{background:#010d1d;margin-top:34px}
+    .foot{padding:28px 24px;text-align:center;color:#a6c7e6}
+    .credit{opacity:.7;font-size:13px}
+
+    /* Accesibilidad util */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   </style>
 </head>
 <body>
-  <!-- Floating particles -->
-  <div class="particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
+  <div class="wrap">
+    <header>
+      <!-- Logo SVG inline (ultra rápido) -->
+      <a href="/" aria-label="FLUENS home" style="display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(180deg,#0ab,#07c);box-shadow:0 8px 24px #00ccff33">
+        <svg viewBox="0 0 64 64" width="28" height="28" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#e9fbff"/><stop offset="1" stop-color="#c6f6ff"/></linearGradient></defs>
+          <path d="M10 40c6-9 18-9 24 0 3 5 10 5 13 0 1-2 1-4 0-6a9 9 0 0 0-13-2c1-5-2-10-7-11-6-2-12 2-13 8" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="44" cy="14" r="2.2" fill="#e9fbff"/><circle cx="50" cy="17" r="1.6" fill="#e9fbff" opacity=".9"/><circle cx="46.5" cy="20.5" r="1.4" fill="#e9fbff" opacity=".8"/>
+        </svg>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#principles">Principles</a>
+        <a href="#video">Explainer</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="https://github.com/jherickamaral-AIPDC/FLUENS-AI-Pedagogy" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
   </div>
-  
-  <!-- Wave animation -->
-  <div class="wave"></div>
-  
-  <!-- Main content -->
-  <div class="container">
-    <div class="logo">🌊</div>
-    <h1>FLUENS</h1>
-    <p class="tagline">Where Intelligence Flows, Learning Grows</p>
-    <p class="subtitle">The First AI-to-AI Collaborative Manifesto</p>
-    <p class="coming-soon">Liquid Pedagogy — Coming Soon</p>
-    <p class="preview-text">
-      A revolutionary approach to adaptive, ethical teaching.<br>
-      Co-created by Claude and ChatGPT. Facilitated by Jherick T.
+
+  <section class="hero">
+    <h1 class="title">FLUENS</h1>
+    <p class="tag">Where Intelligence Flows, Learning Grows</p>
+    <p class="lede">
+      The first AI-to-AI collaborative manifesto for liquid pedagogy — a humane,
+      adaptive and ethical approach to teaching, co-created by Claude & ChatGPT and facilitated by Jherick T.
     </p>
-    
-    <div class="cta-buttons">
-      <a href="mailto:jherick@fluens.org" class="cta-button">Get Notified</a>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/jherickamaral-AIPDC/FLUENS-AI-Pedagogy/blob/main/manifiesto/FLUENS_v1.md" target="_blank" rel="noopener">Read the Manifesto</a>
+      <a class="btn" href="#principles">Explore Principles</a>
+      <a class="btn" href="#newsletter">Get Notified</a>
     </div>
-  </div>
-  
+    <!-- Partículas suaves -->
+    <canvas id="dots" aria-hidden="true" style="position:absolute;inset:0;z-index:-1;opacity:.35"></canvas>
+  </section>
+
+  <div class="waves" aria-hidden="true"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap" aria-labelledby="about-title" style="padding:26px 24px 10px">
+    <h2 id="about-title" class="section-title">About FLUENS</h2>
+    <div class="divider"></div>
+    <p class="lede" style="margin:0">
+      FLUENS is a living framework for teaching with empathy and rigor. We adapt style to the learner,
+      we explain our choices transparently, and we honor multiple paths to understanding.
+      Liquid Pedagogy is not a tool — it is a commitment to resonance over imposition.
+    </p>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="principles" class="wrap" aria-labelledby="p-title" style="padding:18px 24px 6px">
+    <h2 id="p-title" class="section-title">The Eight Principles of Flow</h2>
+    <div class="divider"></div>
+    <div class="grid">
+      <article class="card"><div class="i">🔮</div><h3>Liquid Mirror</h3><p>Profiles are hypotheses about the present self — never cages about the future self.</p></article>
+      <article class="card"><div class="i">🧭</div><h3>Emotional Compass</h3><p>Style adapts in real time, guided by signals of mind and heart.</p></article>
+      <article class="card"><div class="i">🎵</div><h3>Dance of Frequencies</h3><p>We match your rhythm to move toward understanding together.</p></article>
+      <article class="card"><div class="i">🔍</div><h3>Transparent Windows</h3><p>Every adaptation explains the what and the why. No black boxes.</p></article>
+      <article class="card"><div class="i">🚪</div><h3>Twin Doors</h3><p>Direct answer when needed; depth on request — always open.</p></article>
+      <article class="card"><div class="i">⏳</div><h3>Memory of Sand</h3><p>Past patterns hold, yet flow when the tide changes. No lock-in.</p></article>
+      <article class="card"><div class="i">🎭</div><h3>Transparent Adaptation</h3><p>Shifts are visible like a mountain stream: calm, clear, accountable.</p></article>
+      <article class="card"><div class="i">🌈</div><h3>Diverse Paths</h3><p>Many routes, one summit of understanding. Honor authentic minds.</p></article>
+    </div>
+  </section>
+
+  <!-- VIDEO -->
+  <section id="video" class="wrap" aria-labelledby="video-title" style="padding:26px 24px 38px">
+    <h2 id="video-title" class="section-title">Explainer Video</h2>
+    <div class="divider"></div>
+    <p class="lede" style="margin:0 0 14px">A 2-minute overview of FLUENS and the Liquid Pedagogy model.</p>
+    <div style="position:relative;max-width:960px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px #00ccff22;border:1px solid #00ccff33;aspect-ratio:16/9;background:#041a2e">
+      <!-- TODO: Pega aquí el embed cuando lo tengas (YouTube/Vimeo) -->
+      <iframe title="FLUENS Explainer Video" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" style="position:absolute;inset:0;border:0;width:100%;height:100%;"></iframe>
+      <div style="position:absolute;inset:0;display:grid;place-items:center;color:#a6c7e6;font-style:italic">Video coming soon…</div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="wrap" aria-labelledby="nl-title" style="padding:8px 24px 46px">
+    <h2 id="nl-title" class="section-title">Join the Early List</h2>
+    <div class="divider"></div>
+    <p class="lede" style="margin:0 0 16px">Be the first to try the demo and read the paper.</p>
+
+    <!-- Enlace a Google Form (rápido). Sustituye la URL en JS abajo -->
+    <div class="cta"><a class="btn primary" id="notifyLink" href="#" target="_blank" rel="noopener">Get Notified</a></div>
+
+    <!-- Opción PRO: formulario nativo (queda oculto hasta que quieras activarlo) -->
+    <form id="nlForm" style="display:none;max-width:560px;margin:16px auto 0" autocomplete="email" novalidate>
+      <label for="email" class="sr-only">Email</label>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <input id="email" name="email" type="email" placeholder="you@example.com" required
+               style="flex:1;min-width:240px;border-radius:999px;border:1.6px solid #00ccff66;padding:12px 16px;background:#031a2f;color:#e8f6ff;outline:none" />
+        <button class="btn primary" type="submit">Subscribe</button>
+      </div>
+      <p id="nlMsg" style="margin:10px 4px 0;color:#a9c9e6;font-size:14px"></p>
+    </form>
+  </section>
+
   <footer>
-    <div>© 2025 FLUENS.ORG — Liquid Pedagogy Manifesto</div>
-    <div class="creators">Claude × ChatGPT × Jherick T — The Dialogue Architect</div>
+    <div class="foot">
+      <div class="credit">© 2025 FLUENS — Liquid Pedagogy Manifesto · MIT License</div>
+      <div class="credit">Co-created by Claude × ChatGPT · Facilitated by Jherick T — The Dialogue Architect</div>
+    </div>
   </footer>
+
+  <script>
+    // ===== Partículas suaves =====
+    (function(){
+      const c=document.getElementById('dots'); const ctx=c.getContext('2d');
+      function size(){c.width=innerWidth; c.height=340}
+      size(); addEventListener('resize',size);
+      const n=Math.min(70,Math.floor(innerWidth/20));
+      const pts=[...Array(n)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+0.6,dx:(Math.random()*0.6-.3),dy:(Math.random()*0.6-.3)}));
+      function step(){
+        ctx.clearRect(0,0,c.width,c.height);
+        ctx.fillStyle='rgba(0,204,255,.7)';
+        for(const p of pts){
+          p.x+=p.dx; p.y+=p.dy;
+          if(p.x<0||p.x>c.width) p.dx*=-1;
+          if(p.y<0||p.y>c.height) p.dy*=-1;
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+      step();
+    })();
+
+    // ===== Newsletter: coloca tu Google Form aquí =====
+    const GOOGLE_FORM_URL = ""; // ej: "https://forms.gle/xxxxxxxxxxxxxxxx7"
+    const link = document.getElementById("notifyLink");
+    if (GOOGLE_FORM_URL) {
+      link.href = GOOGLE_FORM_URL;
+    } else {
+      // Si aún no tienes Form, muestra un form local "placeholder"
+      document.getElementById("nlForm").style.display = "block";
+      link.parentElement.style.display = "none";
+      document.getElementById("nlForm").addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const msg=document.getElementById("nlMsg");
+        msg.textContent="Thanks! We’ll add a proper signup provider shortly.";
+        e.target.reset();
+      });
+    }
+  </script>
 </body>
 </html>
